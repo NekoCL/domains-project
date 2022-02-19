@@ -1,12 +1,12 @@
 const main = async () => {
     const domainContractFactory = await hre.ethers.getContractFactory('Domains');
-      const domainContract = await domainContractFactory.deploy("asuka");
-      await domainContract.deployed();
+    const domainContract = await domainContractFactory.deploy("asuka");
+    await domainContract.deployed();
   
     console.log("Contract deployed to:", domainContract.address);
   
-      let txn = await domainContract.register("rei",  {value: hre.ethers.utils.parseEther('1')});
-      await txn.wait();
+    let txn = await domainContract.register("rei",  {value: hre.ethers.utils.parseEther('1')});
+    await txn.wait();
     console.log("Minted domain rei.asuka");
     
     txn = await domainContract.setRecord("banana", "Am I Rei or Asuka??");
